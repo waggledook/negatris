@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Negative Prefix Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Game Box with Falling Words and Buckets -->
+    <div id="word-display">
+      <!-- Buckets for Prefixes -->
+      <div id="prefix-buckets">
+        <div class="bucket" data-prefix="un-">un-</div>
+        <div class="bucket" data-prefix="in-">in-</div>
+        <div class="bucket" data-prefix="dis-">dis-</div>
+        <div class="bucket" data-prefix="im-">im-</div>
+        <div class="bucket" data-prefix="ir-">ir-</div>
+        <div class="bucket" data-prefix="il-">il-</div>
+      </div>
+    </div>
+
+    <!-- Score and Timer Display -->
+    <div id="score">Score: 0</div>
+    <div id="timer">Time: 120s</div>
+
+    <!-- Game Control Buttons -->
+    <button id="start-button">Start Game</button>
+    <button id="restart-button">Restart Game</button>
+
+    <!-- Mistakes Display -->
+    <div id="mistakes"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

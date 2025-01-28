@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#game-container {
+  text-align: center;
+  width: 800px; /* Adjust as needed */
+}
+
+#word-display {
+  position: relative;
+  height: 400px; /* Increased height for better visibility */
+  width: 100%;
+  border: 2px solid #333;
+  overflow: hidden;
+}
+
+.falling-word {
+  position: absolute;
+  font-size: 20px;
+  color: #333;
+  top: 0;
+}
+
+#prefix-buckets {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+}
+
+.bucket {
+  padding: 10px 20px;
+  border: 2px solid #333;
+  background-color: #ccc;
+  width: 15%;
+  text-align: center;
+}
+
+#score {
+  margin-top: 20px;
+  font-size: 24px;
+}
