@@ -83,7 +83,6 @@ function createFallingWord() {
   wordElement.dataset.correctPrefix = correctPrefix;
   wordElement.dataset.processed = "false";
 
-  // Spawn words in a range where they can reach all buckets
   wordElement.style.left = `${Math.random() * 70 + 5}%`; // Range: 5% to 75%
   wordElement.style.top = `0px`;
   wordDisplay.appendChild(wordElement);
@@ -144,10 +143,13 @@ function detectCollisions() {
     buckets.forEach(bucket => {
       const bucketRect = bucket.getBoundingClientRect();
 
+      const overlapWidth = Math.min(wordRect.right, bucketRect.right) - Math.max(wordRect.left, bucketRect.left);
+      const wordWidth = wordRect.right - wordRect.left;
+
       if (
         wordRect.bottom >= bucketRect.top &&
-        wordRect.left >= bucketRect.left &&
-        wordRect.right <= bucketRect.right
+        overlapWidth > 0 &&
+        overlapWidth / wordWidth >= 0.5
       ) {
         checkCollision(wordElement, bucket);
       }
@@ -214,10 +216,12 @@ document.addEventListener("keydown", (e) => {
   activeWords.forEach(wordElement => {
     const currentLeft = parseFloat(wordElement.style.left) || 0;
 
-    if (e.key === "ArrowLeft" && currentLeft > 0) {
-      wordElement.style.left = `${Math.max(currentLeft - 5, 0)}%`;
-    } else if (e.key === "ArrowRight" && currentLeft < 95) {
-      wordElement.style.left = `${Math.min(currentLeft + 5, 95)}%`;
+    if (e.key === "ArrowLeft") {
+      const newLeft = currentLeft - 5;
+      wordElement.style.left = newLeft < 0 ? `95%` : `${newLeft}%`;
+    } else if (e.key === "ArrowRight") {
+      const newLeft = currentLeft + 5;
+      wordElement.style.left = newLeft > 95 ? `0%` : `${newLeft}%`;
     }
   });
 });
